@@ -29,11 +29,7 @@ RUN stack --resolver "ghc-${ghc_version}" script --package filemanip --package f
 # generate .agdai files for agda-stdlib
 WORKDIR /root/.agda/lib/standard-library
 RUN mv Everything.agda src/
-RUN agda --verbose=0 --no-guardedless src/Everything.agda
-RUN mv src/Everything.agda .
-#RUN cp README.agda src
-#RUN agda --verbose=0 --no-guardless src/README.agda
-RUN agda --verbose=0 --no-guardedless src/Everything.agda
+RUN agda --verbose=0 src/Everything.agda
 RUN mv src/Everything.agda .
 RUN rm _build/${agda_version}/agda/src/Everything.agdai
 
